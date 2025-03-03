@@ -1,0 +1,30 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /account/
+
+Allow: /
+
+Sitemap: https://www.cherryinterior.com/sitemap.xml
+
+# Allow search engines to crawl essential pages
+Allow: /index.html
+Allow: /about.html
+Allow: /services.html
+Allow: /cutting-list.html
+Allow: /shop.html
+Allow: /projects.html
+Allow: /contact.html
+
+# Prevent search engines from indexing duplicate or irrelevant content
+Disallow: /temp/
+Disallow: /private/
+Disallow: /old/
+
+# Prevent indexing of script and style directories
+Disallow: /scripts/
+Disallow: /styles/
+
+# Crawl delay to prevent overloading the server
+Crawl-delay: 10

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <!-- Blog Post Section Box -->
+    <div class="blog-post-box p-4 shadow-sm bg-light rounded">
+      <!-- Blog Title -->
+      <h1 class="text-center text-primary mb-4">{{ content.title }}</h1>
+
+      <!-- Thumbnail Image -->
+      <div class="text-center">
+        <img src="{{ url_for('main.blog_images', filename=content.thumbnail) }}" class="img-fluid mb-4 rounded" alt="Thumbnail">
+      </div>
+
+
+      <!-- Full Content (if available) -->
+      <div class="content-details">
+       
+        <p>{{ content.display }}</p>
+      </div>
+
+      <!-- Back to List Button -->
+      <div class="text-center mt-4">
+        <a href="{{ url_for('main.content') }}" class="btn btn-outline-primary btn-lg">Back to Blog List</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
