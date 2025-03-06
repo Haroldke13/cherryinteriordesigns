@@ -11,3 +11,4 @@ gunicorn
 requests
 Faker
 werkzeug
+flask-migrate
