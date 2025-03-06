@@ -1,0 +1,13 @@
+Flask
+Flask-SQLAlchemy
+Flask-Login
+Flask-WTF
+Jinja2
+itsdangerous
+WTForms
+python-dotenv
+WeasyPrint
+gunicorn
+requests
+Faker
+werkzeug
