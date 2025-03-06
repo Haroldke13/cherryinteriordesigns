@@ -1,0 +1,299 @@
+{% extends "base.html" %}
+
+{% block title %} Cart {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <hr>
+
+    <section class="hero-section text-center text-white bg-primary py-5" style="background: linear-gradient(135deg, rgba(143, 11, 11, 0.3) 50%, rgba(32, 34, 145, 0.86) 50%);">
+        <div class="container">
+          <h1 class="display-4 text-dark font-weight-bold">CART</h1>
+        </div>
+    </section>
+    <hr>
+
+
+    <div id="mpesa-message"></div>
+    <section class="hero-section text-center bg-info text-dark py-5" style="border-radius:15px ;">
+
+
+    <table class="table table-bordered" style="border-radius:15px ;">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Image</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+            <tr>
+                <td>{{ item.product.product_name }}</td>
+                <td><img src="{{ url_for('main.product_images', filename=item.product.product_picture) }}" alt="{{ item.product.product_name }}" style="width: 100px;"></td>
+                <td>
+                    <form action="{{ url_for('main.update_cart_quantity', item_id=item.id) }}" method="POST">
+                        <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control" style="width: 80px;">
+                        <button type="submit" class="btn btn-primary mt-2">Update</button>
+                    </form>
+                </td>
+                <td>Ksh{{ item.product.current_price }}</td>
+                <td>Ksh{{ item.product.current_price * item.quantity }}</td>
+                <td>
+                    <form action="{{ url_for('main.delete_from_cart', item_id=item.product_link) }}" method="POST">
+                        <button type="submit" class="btn btn-danger">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+
+
+
+
+
+</section>
+
+  
+<hr>
+</div>
+
+  
+
+
+
+
+
+
+<div class="row">
+        <!-- Billing Details Section -->
+        <div class="col-md-7">
+            <section class="hero-section text-center bg-light text-dark py-5" style="border-radius:15px ;">
+
+            <h3>Billing details</h3>
+            <div class="container">
+                <form method="POST" >
+                    {{ form.hidden_tag() }} <!-- CSRF protection -->
+        
+                    <div class="form-group">
+                        <label for="first_name">First Name:</label>
+                        {{ form.first_name(class="form-control") }}
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="last_name">Last Name:</label>
+                        {{ form.last_name(class="form-control") }}
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="company_name">Company Name (Optional):</label>
+                        {{ form.company_name(class="form-control") }}
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="country">Country/Region:</label>
+                        {{ form.country(class="form-control") }}
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="address_1">Street Address:</label>
+                        {{ form.address_1(class="form-control") }}
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="address_2">Apartment, Suite, Unit, etc. (Optional):</label>
+                        {{ form.address_2(class="form-control") }}
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="city">City/Town:</label>
+                        {{ form.city(class="form-control") }}
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="state">State/County:</label>
+                        {{ form.state(class="form-control") }}
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="postcode">Postcode/ZIP:</label>
+                        {{ form.postcode(class="form-control") }}
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="billing_phone">Phone <span class="text-danger">*</span></label>
+                        <input type="tel" class="form-control" id="billing_phone" name="billing_phone" value="2547" required>
+                    </div>
+                    
+        
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        {{ form.email(class="form-control") }}
+                    </div>
+        
+                </form>
+            </div>
+        </div>
+        </section>
+        <!-- Order Summary and Payment Section -->
+        <div class="col-md-5">
+
+        <section class="hero-section text-center bg-light text-dark py-5" style="border-radius:15px ;">
+
+            <h3>Your order</h3>
+            
+
+
+
+
+
+
+        <div class="card">
+            <div class="card-body">
+                <h3>Cart Summary </h3>
+                <hr color="black">
+                <ul class="list-group">
+                    {% for item in cart %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                        <strong>{{item.product.product_name}}</strong>
+                        <span id="amount">{{item.product.current_price}} X <span id="quantity{{item.id}}">{{ item.quantity }}</span></span>
+                    </li>
+                    {% endfor %}
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                        Amount <span>Ksh <span id="amount_tt">{{ amount }}</span></span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                        <div style="margin-top: 15px;">
+                            <strong>Total</strong>
+                            <small>(Including Shipping)</small>
+                        </div>
+                        <span><strong>Ksh </strong><span id="totalamount"><strong>{{ total }}</strong></span></span>
+                    </li>
+                </ul>
+
+                <div class="d-grid">
+                    <br>
+                    
+                    <form id="mpesa-form" action="/mpesa/stk_push" method="POST">
+                        <input type="text" name="phone_number" placeholder="Enter M-Pesa Phone Number" required>
+                        <input type="hidden" name="amount" value="{{ total }}">  <!-- Ensure 'amount' is set correctly -->
+                        <button type="submit" class="btn btn-success btn-block">Pay with M-Pesa</button>
+                    </form>
+                    
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <script>
+                        document.getElementById("mpesa-form").addEventListener("submit", function (e) {
+                            e.preventDefault();
+                    
+                            var phone_number = $("input[name='phone_number']").val();
+                            var amount = $("input[name='amount']").val();
+                    
+                            console.log("Phone Number:", phone_number);
+                            console.log("Total Amount:", amount);
+                    
+                            // ✅ Allow both '07XXXXXXXX' and '2547XXXXXXXX' formats
+                            var phonePattern = /^(?:2547\d{8}|07\d{8})$/;
+
+                            
+
+                            // ✅ Send AJAX request if validation passes
+                            $.ajax({
+                                url: "/mpesa/stk_push",
+                                type: "POST",
+                                contentType: "application/json",
+                                data: JSON.stringify({ 
+                                    "phone_number": phone_number, 
+                                    "amount": amount 
+                                }),
+                                success: function(response) {
+                                    alert(response.message);
+                                },
+                                error: function(xhr) {
+                                    alert("Error: " + (xhr.responseJSON ? xhr.responseJSON.error : "An error occurred."));
+                                }
+                            });
+                        });
+                    </script>
+                    
+                    <br>
+                </section>
+
+                    <!--    <form id="mpesa-payment-form">
+                            <label for="mpesa_phone">M-Pesa Phone Number:</label>
+                            <input type="text" id="mpesa_phone" name="phone" required class="form-control" placeholder="Enter M-Pesa number">
+                            <input type="hidden" id="mpesa_amount" name="amount" value="{{ total }}">
+                            <br>
+                            <button type="submit" class="btn btn-success">Pay via M-Pesa</button>
+                            </form>
+                            </div>
+                            
+                            <script>
+                                document.getElementById("mpesa-payment-form").addEventListener("submit", function(event) {
+                                    event.preventDefault();
+                                    let phone = document.getElementById("mpesa_phone").value;
+                                    let amount = document.getElementById("mpesa_amount").value;
+                            
+                                    fetch("/mpesa/stkpush", {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json"
+                                        },
+                                        body: JSON.stringify({ phone: phone, amount: amount })
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        alert("M-Pesa STK Push Sent! Please check your phone.");
+                                    })
+                                    .catch(error => {s
+                                        console.error("Error:", error);
+                                    });
+                                });
+                            </script>-->
+                    
+                    
+                    
+                
+                
+                        </div>
+            
+            
+                    </div>
+        </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".plus-cart").forEach(button => {
+            button.addEventListener("click", function() {
+                let quantityElement = this.previousElementSibling;
+                let quantity = parseInt(quantityElement.textContent, 10) + 1;
+                quantityElement.textContent = quantity;
+            });
+        });
+
+        document.querySelectorAll(".minus-cart").forEach(button => {
+            button.addEventListener("click", function() {
+                let quantityElement = this.nextElementSibling;
+                let quantity = Math.max(1, parseInt(quantityElement.textContent, 10) - 1);
+                quantityElement.textContent = quantity;
+            });
+        });
+    });
+</script>
+</div>
+{% endblock %}

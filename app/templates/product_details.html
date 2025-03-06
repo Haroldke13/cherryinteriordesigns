@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Product Details Section -->
+<div class="container mt-5">
+  <div class="row">
+    <!-- Left Column: Product Images -->
+    <div class="col-md-6">
+      <!-- Product Image Carousel -->
+      <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- Main Product Image -->
+          <div class="carousel-item active">
+            <img src="{{ url_for('main.product_images', filename=product.product_picture) }}" 
+                 alt="{{ product.product_name }}" 
+                 class="d-block w-100 img-fluid">
+          </div>
+
+          <!-- Additional Images (if available) -->
+          {% if product.additional_images %}
+            {% for image in product.additional_images %}
+            <div class="carousel-item">
+              <img src="{{ url_for('main.product_images', filename=image) }}" 
+                   alt="{{ product.product_name }} additional image" 
+                   class="d-block w-100 img-fluid">
+            </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Right Column: Product Info -->
+    <div class="col-md-6">
+      <h2 class="product-name text-dark font-weight-bold">{{ product.product_name }}</h2>
+      
+      <!-- Price Section -->
+      <div class="price-section">
+        <p class="current-price text-primary display-4">Ksh {{ product.current_price }}</p>
+        {% if product.previous_price %}
+        <p class="previous-price text-muted text-decoration-line-through">Ksh {{ product.previous_price }}</p>
+        {% endif %}
+        <p class="discount text-success font-weight-bold">You Save: Ksh {{ product.previous_price - product.current_price if product.previous_price else 0 }}</p>
+      </div>
+      
+
+      <!-- Stock Info -->
+      <div class="stock-info">
+        <p class="text-muted"><strong>In Stock:</strong> {{ product.in_stock }} Left</p>
+      </div>
+
+      <hr>
+
+      <!-- Product Description -->
+      <div class="product-description">
+        <p class="text-muted">{{ product.product_description }}</p>
+      </div>
+      <hr>
+
+      <!-- Action Buttons -->
+      <div class="d-flex mt-3">
+        <a href="{{ url_for('main.add_to_cart', item_id=product.id) }}" 
+           class="btn btn-primary btn-lg w-100 me-2" 
+           style="font-size: 16px; border-radius: 10px;">
+           Add to Cart
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<!-- Related Items Section -->
+<div class="container mt-5">
+    <h3 class="mb-4">Related Items</h3>
+    <div class="row">
+      {% for item in related_items %}
+      <div class="col-md-3 mb-3">
+        <div class="card h-100">
+          <img src="{{ url_for('main.product_images', filename=item.product_picture) }}" 
+               class="card-img-top img-fluid" 
+               alt="{{ item.product_name }}" 
+               style="height: 180px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title" style="font-size: 14px;">{{ item.product_name }}</h5>
+            <p class="card-text" style="font-size: 14px;">Ksh {{ item.current_price }}</p>
+            <a href="{{ url_for('main.product_details', product_id=item.id) }}" 
+               class="btn btn-sm btn-primary" 
+               style="font-size: 13px;">View Details</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <hr>
+{% endblock %}

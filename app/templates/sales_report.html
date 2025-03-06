@@ -1,0 +1,27 @@
+{# filepath: /home/harold/Desktop/videoConverter/cherry/app/templates/sales_report.html #}
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>My Sales Activity Report</h2>
+    <p>Account: {{ customer.username }} | Phone: {{ customer.phone }}</p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Event Type</th>
+                <th>Product</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.event_type }}</td>
+                <td>{{ log.product_id }}</td>
+                <td>{{ log.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('main.profile_sales_report', download=1) }}" class="btn btn-primary">Download as PDF</a>
+</div>
+{% endblock %}

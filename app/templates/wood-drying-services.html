@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+
+{% block title %}Wood Drying Services{% endblock %}
+
+{% block body %}
+<hr>
+<section class="hero-section text-center text-white bg-primary py-5" style="background: linear-gradient(135deg, rgba(143, 79, 79, 0.3) 50%, rgba(32, 34, 145, 0.86) 50%); ">
+    <div class="container">
+      <h1 class="display-4 text-dark font-weight-bold">Wood Drying Services</h1>
+    </div>
+</section>
+<hr>
+<section class="section text-center bg-light py-5" style="padding: 10px; border-radius: 15px;">
+
+<div class="container" style="display: flex; justify-content: space-between; gap: 20px; max-width: 1200px; margin: 0 auto; padding: 20px; ">
+    <!-- Main Content Area (Left Column) -->
+    <div class="main-content" style="flex: 0 0 70%; max-width: 70%;">
+        
+
+        <section class="intro-text" style="margin-bottom: 30px; ">
+            <p>
+                At <a href="/" style="color:green;">Cherry Interiors</a>, we understand the importance of properly dried wood in ensuring the longevity and quality of your wooden projects. <br>
+                Whether you’re a woodworking enthusiast or a professional carpenter, 
+                our Wood Drying Services are designed to cater to your specific needs. Here’s how we can assist you:
+                <br>
+                <br>
+                <br>
+                <strong>i. State-of-the-Art Kiln Drying Services</strong>
+                <br>
+                <br>
+                To enable us to serve you better, we’ve invested in cutting-edge technology our Kiln Drier. This impressive machine boasts a remarkable capacity, capable of drying over 50,000 Board Feet of timber in less than 3 weeks! The result?
+                 Timber that is perfectly dried, eliminating concerns about warping and ensuring its stability and durability.
+                 <br>
+                 <br>
+            </p>
+        </section>
+
+        <!-- Carousel Section -->
+        <section class="carousel-container" style="position: relative; width: 100%; overflow: hidden; border-radius: 10px; margin-bottom: 40px;">
+            <div class="image-carousel" style="position: relative; display: flex; overflow: hidden;">
+                <div class="carousel-images" id="carouselImages" style="display: flex; transition: transform 0.5s ease;">
+                    <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Wood-Drying-Services-1.jpg" alt="Wood Drying 1" class="carousel-image" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+                    <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Wood-Drying-Services-2.jpg" alt="Wood Drying 2" class="carousel-image" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+                    <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Wood-Drying-Services-3.jpg" alt="Wood Drying 3" class="carousel-image" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+                    <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Wood-Drying-Services-4.jpg" alt="Wood Drying 4" class="carousel-image" style="width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+                </div>
+            </div>
+
+            <div class="carousel-navigation" style="position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); z-index: 10;">
+                <button class="carousel-button prev-button" id="prevButton" style="background-color: rgba(0, 0, 0, 0.5); color: white; font-size: 2rem; padding: 10px; border: none; cursor: pointer; border-radius: 50%; transition: background-color 0.3s;">&#10094;</button>
+                <button class="carousel-button next-button" id="nextButton" style="background-color: rgba(0, 0, 0, 0.5); color: white; font-size: 2rem; padding: 10px; border: none; cursor: pointer; border-radius: 50%; transition: background-color 0.3s;">&#10095;</button>
+            </div>
+        </section>
+
+        <script>
+            let currentIndex = 0;
+            const images = document.querySelectorAll('.carousel-image');
+            const carouselImages = document.getElementById('carouselImages');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            
+            const updateCarousel = () => {
+                const newTransformValue = -currentIndex * 100 + '%';
+                carouselImages.style.transform = `translateX(${newTransformValue})`;
+            };
+
+            // Function to auto-change the image every 5 seconds
+            setInterval(() => {
+                currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+                updateCarousel();
+            }, 5000);
+
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+                updateCarousel();
+            });
+
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+                updateCarousel();
+            });
+        </script>
+
+   
+        <!-- Price Benefits Section -->
+        <section class="price-benefits" style="margin-bottom: 40px;">
+            <p>But what truly sets us apart is our commitment to affordability. Our prices are the most competitive in the market, making high-quality wood drying accessible to all. We believe that quality should never come at the cost of your budget, and our Kiln Drying Services reflect this belief.
+                <br>
+                <br>
+
+                <br>
+            <strong>ii. Wood Products You Can Trust</strong>
+            <br>
+            <br>
+                At <a href="/" style="color:green;">Cherry Interiors</a>, we don’t just offer wood drying services; we also use the very same dried timber to craft a wide range of wooden products. From elegant frames to sturdy doors, exquisite floors, and intricate stairs, our wooden products are a testament to our dedication to quality.
+                
+                Our secret? We understand that the foundation of durable wooden products is properly dried timber. By using wood that has been meticulously kiln-dried, we ensure that our wooden products are resistant to warping, bending, and other common issues associated with poorly dried wood.
+                
+                <br>
+                <br>
+                When you choose <a href="/" style="color:green;">Cherry Interiors</a> for your wood drying needs, you’re not just receiving dry timber; you’re gaining access to a world of possibilities. Our commitment to excellence and affordability means that you can trust us to deliver top-notch wood products that will stand the test of time.
+                
+                Don’t compromise on the quality of your woodworking projects. Choose <a href="/" style="color:green;">Cherry Interiors</a> for Wood Drying Services and Wooden Products that you can rely on.
+                
+                For more information or to request our services, please contact us. We look forward to serving you and helping bring your woodworking dreams to life!</p>
+        </section>
+
+        <!-- Another Carousel Section -->
+        <section class="custom-carousel-container" style="position: relative; width: 100%; overflow: hidden; border-radius: 10px;">
+            <div class="custom-image-carousel" style="position: relative; display: flex; overflow: hidden;">
+                <div class="custom-carousel-images" id="carouselImages2" style="display: flex; transition: transform 0.5s ease;">
+                    <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Drier-Boiler7-1.jpg" alt="Drier Boiler" class="custom-carousel-image" style="width: 100%; height: auto; object-fit: cover; border-radius: 10px;">
+                    <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Stack-of-timber3.jpg" alt="Stack of Timber" class="custom-carousel-image" style="width: 100%; height: auto; object-fit: cover; border-radius: 10px;">
+                    <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Kiln-Drier-Layout.jpg" alt="Kiln Drier" class="custom-carousel-image" style="width: 100%; height: auto; object-fit: cover; border-radius: 10px;">
+                    <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Stack-of-timber3.jpg" alt="Timber" class="custom-carousel-image" style="width: 100%; height: auto; object-fit: cover; border-radius: 10px;">
+                    <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Wood-Drying-Services-2.jpg" alt="Wood Drier" class="custom-carousel-image" style="width: 100%; height: auto; object-fit: cover; border-radius: 10px;">
+                    <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Wood-Drying-Services-3.jpg" alt="Wood Drying" class="custom-carousel-image" style="width: 100%; height: auto; object-fit: cover; border-radius: 10px;">
+                    
+                    
+                    
+                    <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Electric-Board.jpg" alt="Electric Board" class="custom-carousel-image" style="width: 100%; height: auto; object-fit: cover; border-radius: 10px;">
+                    <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Electric-Boards.jpg" alt="Electric Boards" class="custom-carousel-image" style="width: 100%; height: auto; object-fit: cover; border-radius: 10px;">
+                </div>
+            </div>
+
+            <div class="custom-carousel-navigation" style="position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); z-index: 10;">
+                <button class="custom-carousel-button prev-button" id="prevButton2" style="background-color: rgba(0, 0, 0, 0.5); color: white; font-size: 2rem; padding: 10px; border: none; cursor: pointer; border-radius: 50%; transition: background-color 0.3s;">&#10094;</button>
+                <button class="custom-carousel-button next-button" id="nextButton2" style="background-color: rgba(0, 0, 0, 0.5); color: white; font-size: 2rem; padding: 10px; border: none; cursor: pointer; border-radius: 50%; transition: background-color 0.3s;">&#10095;</button>
+            </div>
+        </section>
+
+        <script>
+            let currentIndex2 = 0;
+            const images2 = document.querySelectorAll('.custom-carousel-image');
+            const carouselImages2 = document.getElementById('carouselImages2');
+            const prevButton2 = document.getElementById('prevButton2');
+            const nextButton2 = document.getElementById('nextButton2');
+
+            const updateCarousel2 = () => {
+                const newTransformValue = -currentIndex2 * 100 + '%';
+                carouselImages2.style.transform = `translateX(${newTransformValue})`;
+            };
+
+            setInterval(() => {
+                currentIndex2 = (currentIndex2 === images2.length - 1) ? 0 : currentIndex2 + 1;
+                updateCarousel2();
+            }, 5000);
+
+            prevButton2.addEventListener('click', () => {
+                currentIndex2 = (currentIndex2 === 0) ? images2.length - 1 : currentIndex2 - 1;
+                updateCarousel2();
+            });
+
+            nextButton2.addEventListener('click', () => {
+                currentIndex2 = (currentIndex2 === images2.length - 1) ? 0 : currentIndex2 + 1;
+                updateCarousel2();
+            });
+        </script>
+    </div>
+
+    <!-- Right Sidebar (30% width, Smaller Column) -->
+    <div class="right-column" style="flex: 0 0 28%; max-width: 28%; background-color:rgb(160, 159, 159); padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <section class="contact-form">
+            <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 20px;">Get in Touch</h3>
+            <form action="/service/wood-drying-services/#wpcf7-f5-p17402-o1" method="post" class="contact-form" aria-labelledby="Contact Form" style="display: flex; flex-direction: column; gap: 15px;">
+                <div class="form-row" style="display: flex; flex-direction: column;">
+                    <label for="name" style="font-size: 1rem;">Your Name *</label>
+                    <input type="text" id="name" name="your-name" placeholder="Your Name" required style="padding: 10px; font-size: 1rem; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-row" style="display: flex; flex-direction: column;">
+                    <label for="email" style="font-size: 1rem;">Your Email *</label>
+                    <input type="email" id="email" name="your-email" placeholder="Your Email" required style="padding: 10px; font-size: 1rem; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-row" style="display: flex; flex-direction: column;">
+                    <label for="phone" style="font-size: 1rem;">Your Phone</label>
+                    <input type="tel" id="phone" name="number-210" placeholder="Your Phone" style="padding: 10px; font-size: 1rem; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div class="form-row" style="display: flex; flex-direction: column;">
+                    <label for="message" style="font-size: 1rem;">Your Message *</label>
+                    <textarea id="message" name="your-message" placeholder="Your Message" required style="padding: 10px; font-size: 1rem; border-radius: 5px; border: 1px solid #ccc; height: 150px;"></textarea>
+                </div>
+                <button type="submit" class="submit-button" style="background-color: #007bff; color: white; font-size: 1.125rem; padding: 12px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+            </form>
+        </section>
+    </div>
+</div>
+</section>
+{% endblock %}
+

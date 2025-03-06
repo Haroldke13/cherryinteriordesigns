@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %} Cutting List {% endblock %}
+{% block content %}
+
+<!-- Include Bootstrap CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+<section class="bg-primary text-white py-5" style="background: linear-gradient(135deg, rgba(143, 11, 11, 0.3) 50%, rgba(32, 34, 145, 0.86) 50%);">
+    <div class="container text-center">
+        <h1 class="display-3">Submit Your Cutting List Online</h1>
+        <p class="lead">Fast, Easy, and Hassle-Free Cutting List Submission – Right from Your Comfort Zone.</p>
+        <a href="#cutting-list-form" class="btn btn-warning btn-lg mt-4">Submit Now</a>
+    </div>
+</section>
+<hr>
+<section class="py-5" id="cutting-list-form" style="background: lightgray; border-radius: 15px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Main Column: Instructions and Form -->
+            <div class="col-md-8">
+                <h5 class="text-center mb-4">Submit the form below and check your email for the cutting list.</h5>
+                <h5 class="text-center mb-4">Fill it out and send it back to us for processing.</h5>
+                <p class="text-center">Need assistance? Call us at: <strong>+254 727 709 992</strong> or <strong>+254 733 632 970</strong></p>
+                <!-- Form -->
+                <form action="/cutting-list/" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="your-name" class="form-label">Your Full Name (required)</label>
+                        <input type="text" id="your-name" name="your-name" class="form-control" placeholder="Your name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="your-email" class="form-label">Email (required)</label>
+                        <input type="email" id="your-email" name="your-email" class="form-control" placeholder="Your working email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="your-phone" class="form-label">Phone (required)</label>
+                        <input type="tel" id="your-phone" name="your-phone" class="form-control" placeholder="Your phone number" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cutting-list-file" class="form-label">Upload the Cutting List Form</label>
+                        <input type="file" id="cutting-list-file" name="file" class="form-control" accept=".pdf,.jpg,.png,.doc,.docx" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg w-100">Submit Cutting List</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<hr>
+<section class="py-5 bg-light" style="background: linear-gradient(135deg, rgba(58, 56, 163, 0.3) 50%, rgba(124, 125, 179, 0.86) 50%); border-radius: 15px;">
+    <div class="container text-center">
+        <h5>Alternatively,</h5>
+        <h5>1. Download Cutting List below</h5>
+        <a href="https://cherryinterior.com/wp-content/uploads/2023/08/Cutting-List-Form-1.xls" class="btn btn-success btn-lg mt-3" target="_blank">
+            <i class="fas fa-download"></i> Download Cutting List Template
+        </a>
+        <h5 class="mt-4">Step 2: Fill in the Cutting List Form</h5>
+        <p>Complete the Cutting List form. For assistance, call <strong>+254 727 709 992</strong> or <strong>+254 733 632 970</strong></p>
+        <h5>Step 3: Upload the Form</h5>
+        <p>Upload the completed form in the above form or send it to us at <a href="mailto:info@cherryinterior.com">info@cherryinterior.com</a></p>
+    </div>
+</section>
+<hr>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}

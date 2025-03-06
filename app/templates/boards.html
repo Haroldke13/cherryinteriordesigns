@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .category {
+            list-style-type: none;
+            padding: 0;
+        }
+        .category-item {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        .category-item a {
+            text-decoration: none;
+            color: #333;
+        }
+        .category-item .count {
+            color: #888;
+            font-size: 14px;
+        }
+        .children {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Product Categories</h1>
+
+<div class="widget woocommerce widget_product_categories">
+    <span class="gamma widget-title">Product categories</span>
+    <div class="widget-content">
+        <ul class="product-categories">
+            {% for category in categories %}
+                <li class="cat-item cat-item-{{ loop.index }}">
+                    <a href="{{ category.link }}">{{ category.name }} <span class="count">({{ category.count }})</span></a>
+                    {% if category.children %}
+                        <ul class="children">
+                            {% for child in category.children %}
+                                <li class="cat-item cat-item-{{ loop.index }}">
+                                    <a href="{{ child.link }}">{{ child.name }} <span class="count">({{ child.count }})</span></a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

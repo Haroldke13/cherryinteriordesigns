@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cherry Interior - Kenya's leading interior design and e-commerce store. Explore premium furniture, fittings, and expert design solutions.">
+    <meta name="keywords" content="ecommerce, online shop, interior design, Cherry Interiors, online market, kitchen fittings, furniture, doors, home improvement, luxury interiors, custom furniture, office design, home decor, architecture, renovation, interior styling">
+    <meta name="author" content="Cherry Interior">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Cherry Interiors - Premium Interior Solutions">
+    <meta property="og:description" content="Explore top-notch interior designs and furniture solutions in Kenya. Shop now for quality materials and fittings.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:url" content="https://www.cherryinterior.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cherry Interiors - Your Dream, Our Design">
+    <meta name="twitter:description" content="We bring your dream spaces to life with quality designs and premium furniture.">
+    <meta name="twitter:image" content="logo.png">
+    
+    <title>Cherry Interiors {% block title %} {% endblock %}</title>
+    
+    <!-- Stylesheets -->
+    <link rel="icon" href="static/images/sitelogo.jpg" type="image/jpeg">
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <!-- Quill's CSS -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+    <!-- Quill's JS -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        /* Add this CSS in your style.css */
+        .page-background {
+            background: linear-gradient(135deg, rgba(0, 0, 139, 0.3) 80%, rgba(255, 0, 0, 0.3) 80%);
+            background-size: cover; /* Ensure it covers the entire page */
+            background-position: center; /* Center the background */
+            height: 100vh; /* Full viewport height */
+        }
+        .navbar {
+            background-color: #0a1aad; /* Sets a blue background */
+            background-size: cover; /* Ensure it covers the entire navbar */
+            background-position: center; /* Centers the background image */
+            height: auto; /* Makes sure the navbar adjusts to content height */
+            padding: 0.5rem 1rem; /* You can adjust padding based on your design */
+        }
+        .navbar .nav-link {
+            color: white !important; /* Makes navbar text white */
+        }
+        
+        .navbar .nav-link:hover {
+            color: #ccc !important; /* Optional: Change the hover color if needed */
+        }
+        /* Ensure the button has a visible background, text color, and padding */
+        .btn-search {
+            background-color: #007bff; /* Blue background */
+            color: white; /* White text color */
+            border: 1px solid #007bff; /* Blue border */
+            padding: 10px 20px; /* Add padding for better click area */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Adjust font size */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        /* Button hover effect */
+        .btn-search:hover {
+            background-color:rgb(179, 0, 104); /* Darker blue when hovered */
+            border-color: #0056b3; /* Darker border on hover */
+            color: white; /* Ensures text remains white on hover */
+        }
+
+        /* Optional: Focus style for accessibility */
+        .btn-search:focus {
+            outline: none; /* Remove default outline */
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Blue outline on focus */
+        }
+
+        /* Dropdown hover effect */
+        .navbar .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
+
+
+
+</head>
+<body  class="page-background ">
+    <!-- Top Contact & Social Media Row -->
+    <div class="bg-dark text-white text-center py-2">
+        <div class="container d-flex flex-column flex-md-row justify-content-start align-items-center">
+            <!-- Contact Information Column (left) -->
+            <div class="me-auto text-md-left">
+                <i class="fas fa-envelope"></i> info@cherryinterior.com &nbsp; | &nbsp;
+                <i class="fas fa-phone"></i> +254 727 709 992 &nbsp; | &nbsp; +254 733 632 970
+            </div>
+    
+            <!-- Social Media and Button Column (right) -->
+            <div class="text-md-left mt-2 mt-md-0">
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook-f fa-2x"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-youtube fa-2x"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-pinterest fa-2x"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-tiktokfa-2x"></i></a>
+                <a href="/contact-us" class="btn btn-warning btn-sm">Book Appointment</a>
+            </div>
+        </div>
+    </div>
+    
+
+
+    
+    
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img src="static/images/cherry-interiors11-300x90.jpg" alt="Cherry Interior Logo" height="60"> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/services" id="servicesDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                            <li><a class="dropdown-item" href="/wood-drying-services">Wood Drying Services</a></li>
+                            <li><a class="dropdown-item" href="/interior-design">Interior Design</a></li>
+                            <li><a class="dropdown-item" href="/cutting-edging-services">Cutting & Edging Services</a></li>
+                            <li><a class="dropdown-item" href="/pvc-foil-wrap-services">PVC Foil Wrap Services</a></li>
+                            <li><a class="dropdown-item" href="/cnc-machine-work">CNC Machine Work</a></li>
+                            <li><a class="dropdown-item" href="/kitchen-interior-design-services">Kitchen Interior Design</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="/cutting-list">Cutting List</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/shop" id="shopDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                            Shop
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="shopDropdown">
+                            <li><a class="dropdown-item" href="{{ url_for('main.search_random', category='kitchen_accessories') }}">Kitchen Accessories</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('main.search_random', category='boards_materials') }}">Boards & Materials</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('main.search_random', category='kitchen_furniture') }}">Kitchen Furniture</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('main.search_random', category='kitchen_cabinet_fittings') }}">Kitchen Cabinet Fittings</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('main.search_random', category='wooden_items') }}">Wooden Items</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('main.search_random', category='uncategorized') }}">Uncategorized</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('main.search_random', category='flooring') }}">Flooring</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="/content">Blog</a></li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/projects" id="projectsDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                            Projects
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
+                            <li><a class="dropdown-item" href="/wardrobes">Wardrobes</a></li>
+                            <li><a class="dropdown-item" href="/kitchen-fittings">Kitchen Fittings</a></li>
+                            <li><a class="dropdown-item" href="/doors">Doors</a></li>
+                            <li><a class="dropdown-item" href="/frames">Frames</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="d-flex" action="/search" method="POST">
+                    <input class="form-control me-2" name="search" type="search" placeholder="Search">
+                    <button class="btn btn-search" type="submit"><i class="bi bi-search" style="color: white;"></i></button>
+                </form>
+                <ul class="navbar-nav ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">
+                            <i class="bi bi-cart" style="color: white;"></i> 
+                            <span id="cart-count" style="display: none;"></span>
+                        </a>
+                    </li>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            fetch('/cart-count')
+                                .then(response => response.json())
+                                .then(data => {
+                                    const countSpan = document.getElementById('cart-count');
+                                    if (data.count > 0) {
+                                        countSpan.style.display = 'inline';
+                                        countSpan.textContent = `(${data.count})`;
+                                    } else {
+                                        countSpan.style.display = 'none';
+                                    }
+                                })
+                                .catch(error => console.error('Error fetching cart count:', error));
+                        });
+                    </script>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="bi bi-person" style="color: white;"></i></a>
+                        <ul class="dropdown-menu">
+                            {% if current_user.is_authenticated %}
+                                <li><a class="dropdown-item" href="/profile/{{ current_user.id }}"><i class="fa-solid fa-user"></i> Profile</a></li>
+                                <li><a class="dropdown-item" href="/orders"><i class="fa-solid fa-truck-fast"></i> Orders</a></li>
+                                <li><a class="dropdown-item" href="/customers"><i class="fa-solid fa-users"></i> Customers</a></li>
+                                <li><a class="dropdown-item" href="/shop-items"><i class="fa-solid fa-store"></i> Shop Items</a></li>
+                                <li><a class="dropdown-item" href="/add-shop-items"><i class="fa-solid fa-plus"></i> Add Shop Items</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('main.profile_sales_report') }}"><i class="fa-solid fa-plus"></i> Sales Report</a></li>
+                                <li><a class="dropdown-item" href="/view-orders"><i class="fa-solid fa-box"></i> View Orders</a></li>
+                                <li><a class="dropdown-item" href="/admin"><i class="fa-solid fa-cogs"></i> Admin</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('main.admin_sales_report') }}"><i class="fa-solid fa-plus"></i> Admin Sales Report</a></li>
+                                <li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                            {% else %}
+                                <li><a class="dropdown-item" href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a></li>
+                                <li><a class="dropdown-item" href="/signup"><i class="fa-solid fa-user-plus"></i> Sign Up</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+
+        {% block content %}
+        
+        {% endblock %}
+        {% block body %}
+        <!-- Content injected here -->
+        {% endblock %}
+    </div>
+
+
+
+
+
+
+
+    
+    <!-- Call to Action Section -->
+    
+    <div class="text-white text-center py-4" style="background: url('{{ url_for('static', filename='images/background-image.jpg') }}') no-repeat center center/cover; font-weight : bold;">
+        <section class="brandpartners py-5 mx-auto" style="background-color: rgba(211, 211, 211, 0.7); border-radius:45px; max-width: 30%;">
+
+            <hr class="my-4">
+            <h2>You dream it, we design it</h2>
+            <p1>Let's start your new dream project</p1> 
+            <hr class="my-4">
+            
+            <a1 href="#" class="btn btn-primary">SCHEDULE A CHAT</a1>
+            <hr class="my-4">
+            <h4 class="brand_partners">Brand Partners</h4>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+            <style>
+                .brandpartners {
+                    background-color: transparent;
+                }
+                .carousel-item img {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                }
+                @font-face {
+                    font-family: 'Bradley Hand ITC';
+                    src: url('/static/fonts/BradleyHandITCTT.woff') format('woff');
+                }
+                
+                p1,a1,h2,.brand_partners,button {
+                    font-family: 'Bradley Hand ITC', cursive;
+                    color: black;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+
+            </style>
+
+        </section>
+ 
+        <section class="brandpartners py-5 mx-auto" style="background-color: rgba(211, 211, 211, 0.6); border-radius:45px; max-width: 30%;">
+
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                  <!-- Brand Partners Carousel -->
+                  <div id="brandPartnerCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner text-center">
+                      <div class="carousel-item active">
+                        <img src="static/images/HEPO-Brand-Patner.png" class="d-block mx-auto" alt="HEPO Brand Partner" style="height:200px; width:200px;">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="static/images/HETTICH-Brand-Patner.png" class="d-block mx-auto" alt="HETTICH Brand Partner" style="height:200px; width:200px;">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="static/images/SONAE-AURACO-Brand-Patner.png" class="d-block mx-auto" alt="SONAE-AURACO Brand Partner" style="height:200px; width:200px;">
+                      </div>
+                    </div>
+                    <!-- Carousel Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#brandPartnerCarousel" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#brandPartnerCarousel" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          <!-- Bootstrap JS and Popper.js CDN -->
+          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+          
+    
+    <!-- WhatsApp Button -->
+        <a href="https://wa.me/254727709992" class="whatsapp-button" target="_blank">
+            <i class="fab fa-whatsapp fa-3x" style="color: #25D366;"></i>
+        </a>
+
+        <style>
+            .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            border-radius: 50%;
+            background-color:rgb(228, 238, 237);
+
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            cursor: move;
+            }
+            .whatsapp-button:hover {
+            background-color:rgb(154, 201, 195);
+            color: white;
+            }
+        </style>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="btn btn-primary" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scroll to Bottom Button -->
+    <button id="scrollToBottomBtn" class="btn btn-primary" title="Go to bottom">
+        <i class="fas fa-arrow-down"></i>
+    </button>
+
+    <style>
+        #scrollToTopBtn, #scrollToBottomBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: #007bff; /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 10px; /* Rounded corners */
+            font-size: 18px; /* Increase font size */
+        }
+
+        #scrollToTopBtn {
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button 30px from the right */
+        }
+
+        #scrollToBottomBtn {
+            bottom: 70px; /* Place the button above the scroll to top button */
+            right: 30px; /* Place the button 30px from the right */
+        }
+
+        #scrollToTopBtn:hover, #scrollToBottomBtn:hover {
+            background-color: #555; /* Add a dark-grey background on hover */
+        }
+    </style>
+
+    <script>
+        // Get the buttons
+        let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        let scrollToBottomBtn = document.getElementById("scrollToBottomBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the buttons
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
+                scrollToBottomBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+                scrollToBottomBtn.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        scrollToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+
+        // When the user clicks on the button, scroll to the bottom of the document
+        scrollToBottomBtn.onclick = function() {
+            window.scrollTo(0, document.body.scrollHeight);
+        };
+    </script>
+   
+    
+    <!-- Footer Section -->
+    <footer class=" text-dark text-center py-4" style="background-color: rgba(211, 211, 211, 0.2); border-radius:45px;">
+        <section class="brandpartners py-5 mx-auto" style="background-color: rgba(211, 211, 211, 0.6); border-radius:45px; max-width: 30%;">
+
+
+
+        <p>Cherry Interior | 0727 709 992 | 0733 632 970</p>
+        <img src="static/images/cherry-logo-footer86.png" alt="Cherry Interior Logo" height="150"> </a>
+
+    </section>
+
+        <section class="brandpartners py-5 mx-auto" style="background-color: rgba(211, 211, 211, 0.6); border-radius:45px; max-width: 30%;">
+        
+        <p2>
+            <a href="https://www.facebook.com/cherryinteriordecor/" class="text-dark me-3"><i class="fab fa-facebook-f fa-3x"></i></a>
+            <a href="https://www.instagram.com/cherryinterior/" class="text-dark me-3"><i class="fab fa-instagram fa-3x"></i></a>
+            <a href="#" class="text-dark me-3"><i class="fab fa-linkedin-in fa-2x"></i></a>
+            <a href="https://www.youtube.com/@cherryinterior254" class="text-dark me-3"><i class="fab fa-youtube fa-3x"></i></a>
+                <a href="#" class="text-dark me-3"><i class="fab fa-twitter fa-2x"></i></a>
+                <a href="#" class="text-dark me-3"><i class="fab fa-pinterest fa-2x"></i></a>
+                <a href="#" class="text-dark me-3"><i class="fab fa-tiktokfa-2x"></i></a>
+        </p2>
+        <hr class="my-4">
+        <p2>
+            <a3 href="/about" class="text-dark me-3">About Us</a3>
+            <a3 href="/contact-us" class="text-dark me-3">Contact</a3>
+            <a3 href="/shop" class="text-dark me-3">Shop</a3>
+            <a3 href="/videos" class="text-dark me-3">Videos</a3>
+            <a3 href="/content" class="text-dark me-3">Blog</a3>
+        </p2>
+        <style>
+            .brandpartners {
+                background-color: transparent;
+            }
+            .carousel-item img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+            @font-face {
+                font-family: 'Bradley Hand ITC';
+                src: url('/static/fonts/BradleyHandITCTT.woff') format('woff');
+            }
+            
+            p2,a3 {
+                font-family: 'Bradley Hand ITC', cursive;
+                color: black;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+        </style>
+    </section>
+
+
+        <section class="brandpartners py-5 mx-auto" style="background-color: rgba(211, 211, 211, 0.6); border-radius:45px; max-width: 30%;">
+
+        <p>Subscribe to Our Newsletter</p>
+        <form>
+            <input type="email" placeholder="Your Email" required>
+            <button type="submit" class="btn btn-warning btn-sm">Subscribe</button>
+        </form>
+        <p>Copyright © 2025 Cherry Interior. All rights reserved.</p>
+    </section>
+    </footer>
+</body>
+</html>

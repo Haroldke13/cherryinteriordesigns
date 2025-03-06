@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="hero text-center py-5" style="background: linear-gradient(135deg, rgba(143, 11, 11, 0.3) 50%, rgba(32, 34, 145, 0.86) 50%);">
+    <div class="container">
+        <h1 class="display-4 text-white">All Blogs</h1>
+          <p class="lead">Explore our latest blog posts and articles on various topics.</p>
+        
+        <a href="/services" class="btn btn-light btn-lg mt-3">Explore Our Services</a>
+    </div>
+</section>
+<hr>
+<section class="hero text-center py-5" style=" border-radius: 15px; background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.86) 50%);">
+
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Left Column (Blog Display) -->
+
+      <div class="col-md-8">
+        <!-- Header Section -->
+        
+
+        <!-- Content List Section -->
+        <div class="row">
+          {% if content_lists %}
+            {% for content in content_lists %}
+              <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                  <img src="{{ url_for('main.blog_images', filename=content.thumbnail) }}" class="card-img-top" alt="Thumbnail">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ content.title }}</h5>
+                    <p class="card-text">{{ content.excerpt | safe}}...</p>
+                    <a href="{{ url_for('main.blog_details', content_id=content.id) }}" class="btn btn-outline-primary btn-block">Read More</a>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="col-12 text-center">
+              <p>No content found.</p>
+              <a href="/create_content"> Create Content</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+
+
+
+      <!-- Right Column (Search & Recent Posts) -->
+      <div class="col-md-4">
+        <section class="hero text-center py-5 " style="  font-weight:bold; border-radius: 15px; 
+        background-color: rgba(173, 168, 168, 0.3); ">
+
+        <!-- Search Bar Section -->
+        <div class="mb-4">
+          <h4 class="text-center">Search Blogs</h4>
+          <form method="GET" action="{{ url_for('main.content') }}" class="input-group">
+            <input type="text" name="search" class="form-control py-3" placeholder="Search blogs..." value="{{ request.args.get('search', '') }}">
+            <button type="submit" class="btn btn-danger py-3 px-4">
+              <i class="fas fa-search"></i> Search
+            </button>
+          </form>
+        </div>
+        </section>
+<hr>
+        <section class="hero text-center py-5" style=" border-radius: 15px; font-weight:bold;
+        background-color: rgba(173, 168, 168, 0.3);">
+
+        <!-- Recent Posts Section -->
+        <div class="mb-4">
+          <h4 class="text-center">Recent Posts</h4>
+          <ul class="list-group">
+            {% for post in recent_posts %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{{ url_for('main.blog_details', content_id=post.id) }}" class="text-decoration-none text-primary">{{ post.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+</section>
+        
+      </div>
+    
+
+    </div>
+  </div>
+
+</section>
+
+<style>
+    /* Custom styles for the two-column layout */
+.card {
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover; /* Ensures images maintain aspect ratio and fill the container */
+}
+
+.list-group-item {
+    border: 0;
+    padding: 12px 18px;
+    font-size: 1.1rem;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+h1, h4 {
+    font-family: 'Arial', sans-serif; /* Customize fonts */
+    color: #333;
+}
+</style>
+
+{% endblock %}

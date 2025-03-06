@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %} Wardrobes {% endblock %}
+
+{% block body %}
+<hr>
+<!-- Page Title -->
+<section class="hero-section text-center text-white bg-primary py-5">
+    <div class="container">
+        <h1 class="display-4">Our Wardrobe Projects</h1>
+        <p class="lead">Explore our expertly designed wardrobes that blend functionality and style.</p>
+    </div>
+</section>
+<hr>
+<!-- Main Content -->
+<div id="content" class="site-content" tabindex="-1">
+    <div class="container py-5">
+
+        <!-- Wardrobe Projects Carousel -->
+        <div id="wardrobeCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                
+                <!-- First Carousel Item -->
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow-sm border-0">
+                                <img src="https://cherryinterior.com/wp-content/uploads/2023/09/greenzone-wardrbes-850x520.webp" class="card-img-top" alt="The Greenzone Apartments">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title"><a href="/the-greenzone-apartments" class="text-decoration-none text-dark">The Greenzone Apartments</a></h5>
+                                    <p class="card-text">
+                                        <a href="/frames" class="text-primary">Frames</a>, 
+                                        <a href="/kitchen-fittings" class="text-primary">Kitchen Fittings</a>, 
+                                        <a href="/wardrobes" class="text-primary">Wardrobes</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Second Carousel Item -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow-sm border-0">
+                                <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Krishna_Pride_Apartments_kitchen-transformed-850x520.webp" class="card-img-top" alt="Krishna Pride Apartments">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title"><a href="/krishna-pride-apartments" class="text-decoration-none text-dark">Krishna Pride Apartments</a></h5>
+                                    <p class="card-text">
+                                        <a href="/kitchen-fittings" class="text-primary">Kitchen Fittings</a>, 
+                                        <a href="/wardrobes" class="text-primary">Wardrobes</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Third Carousel Item -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow-sm border-0">
+                                <img src="https://cherryinterior.com/wp-content/uploads/2023/09/azalea-heights-5-850x520.webp" class="card-img-top" alt="Azalea Heights">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title"><a href="/azalea-heights" class="text-decoration-none text-dark">Azalea Heights</a></h5>
+                                    <p class="card-text">
+                                        <a href="/wardrobes" class="text-primary">Wardrobes</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Additional carousel items can go here if needed -->
+                
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#wardrobeCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#wardrobeCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+    </div><!-- .container -->
+</div><!-- .site-content -->
+<hr>
+<!-- Custom CSS to enhance visuals -->
+<style>
+    .hero-section {
+        background-image: url('https://cherryinterior.com/wp-content/uploads/2023/09/azalea-heights-5-850x520.webp');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .carousel-item {
+        padding: 30px 0;
+    }
+
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        background-color: #ffffff;
+    }
+
+    .carousel-control-prev, .carousel-control-next {
+        border-radius: 50%;
+    }
+
+    .card-title a {
+        font-size: 1.1rem;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .card-title a:hover {
+        text-decoration: underline;
+        color: #007bff;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-text a {
+        font-size: 0.9rem;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .card-text a:hover {
+        text-decoration: underline;
+    }
+
+    .text-primary {
+        color: #007bff;
+    }
+
+    @media (max-width: 767px) {
+        .carousel-item {
+            padding: 10px 0;
+        }
+    }
+</style>
+
+{% endblock %}

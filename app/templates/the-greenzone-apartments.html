@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %} The Greenzone Apartments
+
+
+
+{% endblock %}
+
+{% block body %}
+
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts CDN for Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <hr>
+    <!-- Container -->
+    <div class="container-fluid">
+        <!-- Header Section -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 text-center">
+                        <h2 class="display-4">The Greenzone Apartments</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+        <!-- Carousel Section -->
+        <section class="py-5">
+            <div id="greenzoneCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://cherryinterior.com/wp-content/uploads/2023/09/greenzone-wardrbes.webp" class="d-block w-100" alt="Greenzone Wardrobes">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Green-zone-Thindigua-2.jpeg" class="d-block w-100" alt="Greenzone Thindigua">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Kitchen-4.jpg" class="d-block w-100" alt="Kitchen View">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://cherryinterior.com/wp-content/uploads/2023/09/Green-zone-Thindigua.jpeg" class="d-block w-100" alt="Greenzone Thindigua 3">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#greenzoneCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#greenzoneCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+        <hr>
+        <!-- Text Section -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 text-center">
+                        <p><strong>We fitted wardrobes, kitchens, and Frames</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr>
+    </div>
+
+    <!-- Bootstrap JS (For Carousel and Other Components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+{% endblock %}

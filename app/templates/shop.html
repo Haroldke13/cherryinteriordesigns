@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!-- Hero Section -->
+<section class="hero-section text-center text-white bg-primary py-5" style="background: linear-gradient(135deg, rgba(143, 11, 11, 0.3) 50%, rgba(32, 34, 145, 0.86) 50%);">
+    <div class="container">
+        <h1 class="display-5 text-light font-weight-bold">SHOP AT CHERRY INTERIOR ONLINE STORE</h1>
+        <p class="lead text-light font-weight-bold">Transforming your house into a space that blends style, functionality, and elegance.</p>
+    </div>
+</section>
+
+<!-- Two-Column Layout with Sidebar and Right Column -->
+<div class="container-fluid mt-4">
+    <div class="row" style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 50%, rgba(195, 196, 235, 0.86) 50%); border-radius: 15px; padding:20px;">
+        <!-- Sidebar Column (Left) -->
+        <div class="col-md-3 d-none d-md-block">
+            <div class="list-group mb-4" id="category-list" 
+                 style="border-radius: 15px; background: linear-gradient(135deg, rgba(25, 47, 77, 0.3) 50%, rgba(32, 34, 145, 0.86) 50%);">
+                <h2 class="text-white mb-3 text-center" style="font-weight: bold; font-size:25px; 
+                background: linear-gradient(135deg, rgba(143, 11, 11, 0.3) 50%, rgba(32, 34, 145, 0.86) 50%); 
+                font-size:25px; font-weight:bold; border-radius: 8px; ">
+                
+                Categories
+                </h2>
+
+                {% for category, icon in [
+                    ('kitchen_accessories', 'fa-utensils'),
+                    ('boards_materials', 'fa-clipboard'),
+                    ('kitchen_furniture', 'fa-couch'),
+                    ('kitchen_cabinet_fittings', 'fa-cogs'),
+                    ('wooden_items', 'fa-tree'),
+                    ('uncategorized', 'fa-box'),
+                    ('flooring', 'fa-tint')
+                ] %}
+                <a href="{{ url_for('main.search_random', category=category) }}" 
+                   class="list-group-item list-group-item-action d-flex align-items-center py-2 my-2 rounded-3" 
+                   style="transition: background-color 0.3s;">
+                    <i class="fa {{ icon }} me-2" style="font-size: 20px;"></i>
+                    <span>{{ category.replace('_', ' ').title() }}</span>
+                </a>
+                {% endfor %}
+            </div>
+
+            <!-- Filter Form
+                <h5 class="text-white mb-3 text-center" 
+                    style="background: linear-gradient(135deg, rgba(143, 11, 11, 0.3) 50%, rgba(32, 34, 145, 0.86) 50%); border-radius: 8px;">Filter by Price</h5>
+                <form method="GET" action="{{ url_for('main.shop') }}" class="mb-4" 
+                    style="background: linear-gradient(135deg, rgba(143, 11, 11, 0.3) 50%, rgba(32, 34, 145, 0.86) 50%); border-radius: 10px;">
+                    <div class="mb-3">
+                        <input type="number" name="min_price" class="form-control" placeholder="Min Price" value="{{ min_price }}">
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" name="max_price" class="form-control" placeholder="Max Price" value="{{ max_price }}">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 rounded-pill">Filter</button>
+                </form> -->
+                <h2 class="text-dark mb-3 text-center" 
+                    style="background: linear-gradient(135deg, rgba(143, 11, 11, 0.3) 50%, rgba(32, 34, 145, 0.86) 50%); font-size:25px; font-weight:bold; border-radius: 8px;">
+                    Filter by Price
+                </h2>
+
+                <form method="GET" action="{{ url_for('main.shop') }}" class="mb-4" 
+                    style="background: linear-gradient(135deg, rgba(143, 11, 11, 0.3) 50%, rgba(32, 34, 145, 0.86) 50%); border-radius: 10px;">
+                    
+                    <div class="mb-3">
+                        <!-- Min Price Slider -->
+                        <label for="min_price" class="form-label text-white">Min Price</label>
+                        <input type="range" class="form-range" id="min_price" name="min_price" min="0" max="30000" step="100" value="{{ min_price }}" 
+                            oninput="this.nextElementSibling.value = this.value">
+                        <output>{{ min_price }}</output> <!-- Display the value next to the slider -->
+                    </div>
+                    
+                    <div class="mb-3">
+                        <!-- Max Price Slider -->
+                        <label for="max_price" class="form-label text-white">Max Price</label>
+                        <input type="range" class="form-range" id="max_price" name="max_price" min="0" max="500000" step="100" value="{{ max_price }}" 
+                            oninput="this.nextElementSibling.value = this.value">
+                        <output>{{ max_price }}</output> <!-- Display the value next to the slider -->
+                    </div>
+                    
+                    <button type="submit" class="btn btn-outline-primary w-100 text-dark rounded-pill">Filter Items </button>
+                </form>
+
+        
+        
+        
+            </div>
+
+        <!-- Right Column -->
+        <div class="col-md-9" >
+            <!-- Display Items -->
+                <section class="displayItems-section text-center text white py-5" style="background: linear-gradient(135deg, rgba(54, 123, 180, 0.3) 50%, rgba(160, 159, 199, 0.81) 50%); border-radius: 15px;">
+            
+                <h2 class="text-center mb-4">Available Items</h2>
+                <div class="container mt-3">
+                    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4">
+                        {% for item in items.items %}
+                        <div class="col">
+                            <div class="card shadow-lg border-0 h-100 d-flex flex-column align-items-center p-2 rounded-3"
+                                 style="transition: transform 0.3s ease; border-radius: 15px; overflow: hidden;">
+                                
+                                <!-- Product Image -->
+                                <div class="d-flex justify-content-center align-items-center" 
+                                     style="height: 180px; width: 180px; overflow: hidden; border-radius: 12px;">
+                                    <img src="{{ item.product_picture }}" class="img-fluid" alt="{{ item.product_name }}" 
+                                         style="object-fit: cover; width: 100%; height: 100%; transition: transform 0.3s;">
+                                </div>
+
+                                <!-- Product Info -->
+                                <div class="card-body text-center mt-3 d-flex flex-column justify-content-between w-100">
+                                    <div>
+                                        <h5 class="card-title" style="font-size: 16px; font-weight: bold; color: #333;">{{ item.product_name }}</h5>
+                                        <p class="card-text" style="font-size: 14px; color: #888;">Ksh {{ item.current_price }}</p>
+                                        <p class="text-success" style="font-size: 14px; font-weight: bold;">{{ item.in_stock }} left</p>
+                                    </div>
+
+                                    <div>
+                                        <!-- View More Button -->
+                                        <a href="{{ url_for('main.product_details', product_id=item.id) }}" 
+                                           class="btn btn-sm btn-outline-primary w-100 mt-2 rounded-pill" 
+                                           style="font-size: 13px; padding: 6px 10px; text-transform: uppercase;">
+                                           View More
+                                        </a>
+
+                                        <!-- Add to Cart Button -->
+                                        <a href="{{ url_for('main.add_to_cart', item_id=item.id) }}" 
+                                           class="btn btn-sm btn-primary w-100 mt-2 rounded-pill" 
+                                           style="font-size: 13px; padding: 6px 10px; text-transform: uppercase;">
+                                           Add to Cart
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center mt-4">
+                {% if items.has_prev %}
+                    <a href="{{ url_for('main.shop', page=items.prev_num, min_price=min_price, max_price=max_price) }}" 
+                       class="btn btn-outline-secondary btn-sm me-2 rounded-pill" 
+                       style="font-size: 14px; padding: 8px 12px;">
+                        &laquo; Previous
+                    </a>
+                {% endif %}
+
+                <span class="align-self-center text-muted" style="font-size: 14px;">Page {{ items.page }} of {{ items.pages }}</span>
+
+                {% if items.has_next %}
+                    <a href="{{ url_for('main.shop', page=items.next_num, min_price=min_price, max_price=max_price) }}" 
+                       class="btn btn-outline-secondary btn-sm ms-2 rounded-pill" 
+                       style="font-size: 14px; padding: 8px 12px;">
+                        Next &raquo;
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile View Dropdown -->
+<div class="d-md-none mt-4">
+    <select class="form-select" onchange="location = this.value;">
+        <option selected>Select Category</option>
+        {% for category, icon in [
+            ('kitchen_accessories', 'fa-utensils'),
+            ('boards_materials', 'fa-clipboard'),
+            ('kitchen_furniture', 'fa-couch'),
+            ('kitchen_cabinet_fittings', 'fa-cogs'),
+            ('wooden_items', 'fa-tree'),
+            ('uncategorized', 'fa-box'),
+            ('flooring', 'fa-tint')
+        ] %}
+        <option value="{{ url_for('main.search_random', category=category) }}">
+            <i class="fa {{ icon }} me-2"></i>{{ category.replace('_', ' ').title() }}
+        </option>
+        {% endfor %}
+    </select>
+</div>
+
+{% endblock %}

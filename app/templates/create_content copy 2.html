@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Create New Content</h1>
+        <div class="form-wrapper">
+            <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+            <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+            {% if current_user.email == 'admin@admin.com' %}
+                <form method="POST" enctype="multipart/form-data" onsubmit="submitForm()">
+                    {{ form.hidden_tag() }}
+
+                    <!-- Title Field -->
+                    <div class="form-group">
+                        <label for="title" class="font-weight-bold">Title</label>
+                        {{ form.title(class="form-control") }}
+                    </div>
+
+                    <!-- Display Text (Quill Editor) -->
+                    <div class="form-group">
+                        <label for="display" class="font-weight-bold">Display Text</label>
+                        <div id="editor-display" class="form-control">
+                            
+                            {{ form.display(attrs={"class": "form-control form-control-lg", "id": "editor-display"}) }}
+                        
+                        </div> 
+                        
+                    </div>
+
+                    <!-- Thumbnail Upload -->
+                    <div class="form-group">
+                        <label for="thumbnail" class="font-weight-bold">Thumbnail</label>
+                        {{ form.thumbnail(class="form-control") }}
+                    </div>
+
+                    <!-- Excerpt (Quill Editor) -->
+                    <div class="form-group">
+                        <label for="excerpt" class="font-weight-bold">Excerpt</label>
+                        <div id="editor-excerpt" class="form-control">
+
+                            {{ form.excerpt(attrs={"class": "form-control form-control-lg", "id": "editor-excerpt"}) }}
+                        
+                    
+                    </div>
+                        
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-primary w-100") }}
+                    </div>
+                </form>
+                <script>
+                            
+                            
+                    var quillDisplay = new Quill('#editor-display', {
+                        theme: 'snow'
+                    });
+                    var quillExcerpt = new Quill('#editor-excerpt', {
+                        theme: 'snow'
+                    });
+
+                    function submitForm() {
+                        var displayContent = document.querySelector('input[name="display"]');
+                        displayContent.value = quillDisplay.root.getText();
+
+                        var excerptContent = document.querySelector('input[name="excerpt"]');
+                        excerptContent.value = quillExcerpt.getText();
+                    }
+                </script>
+
+            {% else %}
+                <p>You do not have access to this page.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <style>
+        .form-wrapper {
+            background-color: rgba(128, 128, 128, 0.7);  /* Grey background with 70% opacity */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 1rem;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Add responsive design adjustments */
+        @media (max-width: 768px) {
+            .form-wrapper {
+                padding: 20px;
+            }
+
+            .form-control {
+                font-size: 0.9rem;
+            }
+
+            .btn-primary {
+                padding: 10px 15px;
+            }
+        }
+    </style>
+{% endblock %}
