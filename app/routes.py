@@ -1708,7 +1708,6 @@ from .forms import ServiceForm
 from .models import Contact
 
 
-
 @main.route('/')
 def home():
     # Example data for services
@@ -1729,7 +1728,6 @@ def home():
         {'name': 'Project 2', 'image': 'project2.jpg', 'slug': 'project2', 'description': 'A luxurious home'}
         # Add more projects as needed
     ]
-    
     
     categories = [
         {"name": "Accessories", "count": 222, "link": "https://cherryinterior.com/product-category/accessories", "children": [
@@ -1755,18 +1753,17 @@ def home():
     ]
 
     page = request.args.get('page', 1, type=int)
-
-    
-
+    products = Product.query.all()
     items = Product.query.filter_by(flash_sale=True).paginate(page=page, per_page=20)
-
 
     return render_template(
         'home.html',
-        services=services, projects=projects, categories=categories,testimonials=testimonials,
+        services=services, projects=projects, categories=categories, testimonials=testimonials,
         items=items,
-        cart=Cart.query.filter_by(customer_link=current_user.id).all() if current_user.is_authenticated else []
+        cart=Cart.query.filter_by(customer_link=current_user.id).all() if current_user.is_authenticated else [],
+        products=products
     )
+
 
 # (Optional) A route to serve other assets (like music) in a separate folder:
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'app/static/profile_pics')
