@@ -28,6 +28,92 @@
     </style>
 </head>
 <body>
+
+ 
+<div class="product-scroll-container " style="height: 100px; border-radius: 20px ">
+
+    <div class="product-scroll">
+        {% for product in products %}
+            <div class="product-item">
+                <a href="{{ url_for('main.product_details', product_id=product.id) }}">
+                
+                    <div class="product-info" >
+                        <h4 class="product-name">{{ product.product_name }}</h4>
+                        <p class="product-price">Kshs{{ product.current_price }}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<style>
+    .product-scroll-container {
+        width: 100%;
+        overflow: hidden; /* Hide overflow to only show one row of products at a time */
+        padding: 10px 0;
+        background-color: rgba(241, 241, 241, 0.8); /* 80% transparency */
+    }
+    
+
+        .product-scroll {
+            display: flex;
+            flex-wrap: nowrap;
+            animation: scroll 40s linear infinite;
+        }
+
+        .product-item {
+            margin-right: 30px;
+            width: 100%%;
+            text-align: left;
+        }
+
+        
+        .product-info {
+            display: flex;
+            justify-content: space-between;  /* Optional: adds space between items */
+            align-items: left; 
+        }
+
+        .product-name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            align-items: left; 
+            
+
+            
+        }
+
+        .product-price {
+            font-weight: bold;
+            font-size: 14px;
+            color: #e74c3c;
+        }
+
+        /* Animation for horizontal scrolling */
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+</style>
+
+<script>
+    document.querySelector('.product-scroll').addEventListener('mouseover', function() {
+        document.querySelector('.product-scroll').style.animationPlayState = 'paused';
+    });
+
+    document.querySelector('.product-scroll').addEventListener('mouseout', function() {
+        document.querySelector('.product-scroll').style.animationPlayState = 'running';
+    });
+</script>
+
+
+<hr>
 <section class="home-section text-center text white py-5">
 
     <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000" style="border-radius: 15px;">
